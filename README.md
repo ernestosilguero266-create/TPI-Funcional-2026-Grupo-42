@@ -42,7 +42,7 @@ Requisitos: [OCaml](https://ocaml.org/) (o el entorno en línea
 
 INFORME
 
-[[docs/INFORME.pdf](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/f6830e85a2e54f617ecc47bf428b78a217246a14/docs/HONOR.md)](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/db5cca30eb8be51ec4ffc4e0d52a8ecd8f519904/docs/INFORME.pdf)
+https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/db5cca30eb8be51ec4ffc4e0d52a8ecd8f519904/docs/INFORME.pdf
 
 Código de Honor
 [docs/HONOR.md](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/f6830e85a2e54f617ecc47bf428b78a217246a14/docs/HONOR.md)
