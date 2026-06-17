@@ -1,3 +1,5 @@
+![Portada](portada2.gif)
+
 # 🚦 Sistema de Semáforos Inteligentes
 
 ### Análisis Comparativo de Paradigmas de Programación
