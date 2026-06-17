@@ -11,48 +11,30 @@ comparativo en **OCaml**.
 
 ## 👥 Integrantes
 
-| Nombre y Apellido | Usuario GitHub |
-|-------------------|----------------|
-| (completar)       | (completar)    |
-| (completar)       | (completar)    |
-| (completar)       | (completar)    |
-| (completar)       | (completar)    |
+| Nombre y Apellido         | Usuario GitHub       |
+|---------------------------|----------------------|
+| Otero Manuel              | Manuotero11          |
+| Facundo Gaston Roda       | Rodafacundogaston    |
+| Rodriguez Agustina Ailén  | Agusrodriguez-hub    |
+| Joaquina Aymara Castañeda | Joacast              |
+| Ernesto Silguero          | Erness266            |
 
 ---
 
 ## 🔗 Enlaces de la entrega
 
-- **Repositorio:** `https://github.com/<usuario>/TPI-Funcional-2026-Grupo-42`
-- **Video de defensa (YouTube, 5–10 min):** `https://youtu.be/<ID-del-video>`  *(completar)*
+ Repositorio: https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42.git
+ Video de defensa: [https://youtu.be/<ID-del-video>](https://www.youtube.com/watch?v=e7jRBheWc54)
 
----
 
-## 📂 Estructura del repositorio
+Como ejecutar el programa
 
-```
-TPI-Funcional-2026-Grupo-42/
-├── lisp/
-│   └── core.lisp        <- Requerimientos 1 al 6 en Common Lisp (con comentarios de tipo)
-├── comparativa/
-│   └── solucion.ml      <- transicion y timer en OCaml (Fase 3, con comentarios de tipo)
-├── docs/
-│   ├── INFORME.md       <- Informe técnico analítico (fuente)
-│   ├── INFORME.pdf      <- Informe técnico analítico (PDF)
-│   └── HONOR.md         <- Declaración de Código de Honor
-└── README.md
-```
+Fase 1 y 2 — Common Lisp (SBCL + Quicklisp)
 
----
-
-## ▶️ Cómo ejecutar
-
-### Fase 1 y 2 — Common Lisp (SBCL + Quicklisp)
-
-**Requisitos:** [SBCL](http://www.sbcl.org/) y [Quicklisp](https://www.quicklisp.org/).
+Requisitos: [SBCL](http://www.sbcl.org/) y [Quicklisp](https://www.quicklisp.org/).
 La Fase 2 integra `local-time` con `(ql:quickload "local-time")`, por lo que
-Quicklisp debe estar instalado para cargar `core.lisp`.
+Quicklisp debe estar instalado para cargar core.lisp.
 
-```bash
 cd lisp
 sbcl --load core.lisp
 ```
