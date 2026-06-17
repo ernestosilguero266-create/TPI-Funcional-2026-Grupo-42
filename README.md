@@ -1,3 +1,5 @@
+![Portada](portada.png)
+
 TPI Funcional 2026 — Grupo 42 
 
 Sistema de Semáforos Inteligentes y Análisis Comparativo de Paradigmas
