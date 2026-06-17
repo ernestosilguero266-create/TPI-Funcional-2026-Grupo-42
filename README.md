@@ -1,15 +1,15 @@
-# TPI Funcional 2026 — Grupo 42 🚦
+TPI Funcional 2026 — Grupo 42 
 
-**Sistema de Semáforos Inteligentes y Análisis Comparativo de Paradigmas**
+Sistema de Semáforos Inteligentes y Análisis Comparativo de Paradigmas
 
 Núcleo lógico de un sistema embebido de control de semáforos, desarrollado con el
-**paradigma funcional** (funciones puras, inmutabilidad y composición) en
-**Common Lisp**, con integración del ecosistema **Quicklisp** y un estudio
-comparativo en **OCaml**.
+paradigma funcional (funciones puras, inmutabilidad y composición) en
+Common Lisp, con integración del ecosistema Quicklisp y un estudio
+comparativo en OCaml.
 
 ---
 
-## 👥 Integrantes
+Integrantes
 
 | Nombre y Apellido         | Usuario GitHub       |
 |---------------------------|----------------------|
@@ -21,7 +21,7 @@ comparativo en **OCaml**.
 
 ---
 
-## 🔗 Enlaces de la entrega
+Enlaces de la entrega
 
  Repositorio: https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42.git
  
