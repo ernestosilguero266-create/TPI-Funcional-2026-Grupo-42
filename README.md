@@ -53,12 +53,12 @@ Estructura del Repositorio
 
 ```
 TPI-Funcional-2026-Grupo-42/
-├── core.lisp          → Fases 1 y 2 — Common Lisp (Reqs 1–6 + local-time)
+├── lisp → core.lisp          → Fases 1 y 2 — Common Lisp (Reqs 1–6 + local-time)
 ├── docs/
 │   ├── INFORME.pdf    → Informe completo Fase 3 (OCaml)
 │   └── HONOR.md       → Código de Honor
 ├── comparativa/
-│    └──solucion.ml
+│    └──solucion.ml → OCaml
 └── README.md
 ```
 
