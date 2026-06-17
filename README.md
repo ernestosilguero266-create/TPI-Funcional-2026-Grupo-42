@@ -1,4 +1,4 @@
-![Portada](PORTADA2.gif)
+
 
 Sistema de Semáforos Inteligentes
 
