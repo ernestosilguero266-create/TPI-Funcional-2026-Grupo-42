@@ -1,5 +1,5 @@
 <div align="center">
-Mostrar imagen
+
 
 🚦 Sistema de Semáforos Inteligentes
 
@@ -69,3 +69,8 @@ El sistema simula el cerebro lógico de un semáforo inteligente:
 
 
 El ciclo es rojo (90s) → verde (120s) → amarillo (6s) = 216s por ciclo completo.
+
+
+<div align="center">
+<sub>Paradigmas y Lenguajes · 2026 · UNNE · Grupo 42</sub>
+</div>
