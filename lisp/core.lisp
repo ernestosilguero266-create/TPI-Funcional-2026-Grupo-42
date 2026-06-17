@@ -12,13 +12,18 @@
 ;;;; =====================================================================
 
 ;;; ---------------------------------------------------------------------
-;;; CARGA DEL ECOSISTEMA (Fase 2: Quicklisp + local-time)
-;;; Se asume Quicklisp instalado (requisito de la Fase 2). El eval-when hace
-;;; que local-time este disponible al cargar (load) y al compilar (compile-file),
-;;; de modo que los simbolos cualificados local-time:... se lean sin error.
+;;; CARGA DEL ECOSISTEMA (Fase 2)
+;;; Quicklisp + libreria local-time.
 ;;; ---------------------------------------------------------------------
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (ql:quickload "local-time"))
+  (let ((setup (merge-pathnames "quicklisp/setup.lisp" (user-homedir-pathname))))
+    (when (and (not (find-package :quicklisp)) (probe-file setup))
+      (load setup)))
+  (when (find-package :quicklisp)
+    (handler-case
+        (funcall (find-symbol "QUICKLOAD" "QL") :local-time :silent t)
+      (error (e)
+        (format t ";; Aviso: no se pudo cargar la libreria de Fase 2 (local-time): ~a~%" e)))))
 
 
 ;;; =====================================================================
@@ -113,39 +118,42 @@
 ;; ESTRATEGIA: Composicion (delega en recursion de cola color-en-posicion)
 ;; IMPACTO: No destructiva
 ;; =====================================================================
-(defun timer (timestamp &optional (tiempos (tiempos-por-defecto)))
+(defun semaforo-timer (timestamp &optional (tiempos (tiempos-por-defecto)))
   (let ((posicion (mod timestamp (duracion-ciclo tiempos))))
     (color-en-posicion posicion (secuencia-temporal) tiempos)))
 
 
 ;;; =====================================================================
-;;; REQUERIMIENTO 3: Sistema de Auditoria (logging) -- IMPURO
-;;; + FASE 2 (local-time): la fecha se muestra legible para humanos.
+;;; REQUERIMIENTO 3: Sistema de registros -- IMPURO
+;;; + FASE 2 (local-time)
 ;;; =====================================================================
 
 ;; =====================================================================
-;; FUNCION: auditoria-quicklisp                  (Requerimiento 3 + FASE 2)
-;; NATURALEZA: Impura (efecto secundario: imprime en la terminal)
-;; ESTRATEGIA: Seleccion por condicion (if) + interop con local-time
-;; IMPACTO: No destructiva (no modifica estructuras en memoria)
+;; FUNCION: formatear-tiempo                               [FASE 2: local-time]
+;; NATURALEZA: Pura (mismo epoch -> mismo string; sin efectos secundarios)
+;; ESTRATEGIA: Composicion / interoperabilidad con la libreria local-time
+;; IMPACTO: No destructiva
 ;; =====================================================================
-;; A partir de UN solo timestamp Unix, deriva el color anterior (timer del
-;; segundo previo) y el actual (timer del timestamp). Si hubo un cambio de
-;; color, audita el evento mostrando la fecha legible con local-time (Fase 2).
-;; El formateo se fija en UTC (+utc-zone+) para que la salida sea determinista
-;; (no dependa de la zona horaria de la maquina).
-(defun auditoria-quicklisp (timestamp)
-  (let ((color-anterior (timer (- timestamp 1)))
-        (color-actual   (timer timestamp)))
-    (if (not (equal color-anterior color-actual))
-        (format t "Tiempo ~A: la luz ha cambiado de ~A a ~A~%"
-                (local-time:format-timestring nil
-                  (local-time:unix-to-timestamp timestamp)
-                  :format '((:year 4) "-" (:month 2) "-" (:day 2)
-                            " " (:hour 2) ":" (:min 2) ":" (:sec 2))
-                  :timezone local-time:+utc-zone+)
-                color-anterior
-                color-actual))))
+(defun formatear-tiempo (epoch)
+  (let ((lt (find-package :local-time)))
+    (if lt
+        (funcall (find-symbol "FORMAT-TIMESTRING" lt)
+                 nil
+                 (funcall (find-symbol "UNIX-TO-TIMESTAMP" lt) epoch)
+                 :format '((:year 4) #\- (:month 2) #\- (:day 2) #\Space
+                           (:hour 2) #\: (:min 2) #\: (:sec 2))
+                 :timezone (symbol-value (find-symbol "+UTC-ZONE+" lt)))
+        (format nil "~a" epoch))))
+
+;; =====================================================================
+;; FUNCION: auditar-cambio                                  (Requerimiento 3)
+;; NATURALEZA: Impura (efecto secundario: escribe en la terminal)
+;; ESTRATEGIA: Composicion (delega el formato del tiempo en formatear-tiempo)
+;; IMPACTO: No destructiva (no modifica estructuras existentes)
+;; =====================================================================
+(defun auditar-cambio (epoch color-anterior color-nuevo)
+  (format t "Tiempo [~a]: la luz ha cambiado de ~(~a~) a ~(~a~)~%"
+          (formatear-tiempo epoch) color-anterior color-nuevo))
 
 
 ;;; =====================================================================
@@ -215,7 +223,7 @@
 (transicion 'en-amarillo 'rojo)     ; NORMAL    => (EN-AMARILLO "cambiar-a-rojo")
 (transicion 'en-rojo 'amarillo)     ; ALTERNATIVO (invalida) => (EN-ROJO ACCION-POR-DEFECTO)
 (transicion 'en-rojo 'azul)         ; ALTERNATIVO (color inexistente) => (EN-ROJO ACCION-POR-DEFECTO)
-(transicion "en-rojo" 'verde)       ; ALTERNATIVO (tipo no esperado): assoc compara con eql => (... ACCION-POR-DEFECTO)
+(transicion "en-rojo" 'verde)       ; ALTERNATIVO (tipo no esperado): assoc compara con eql, un string no matchea => (... ACCION-POR-DEFECTO)
 (transicion 'en-rojo)               ; ERROR: invalid number of arguments (falta el argumento cambiar-a)
 
 ;; ===== Req 2: timer (ciclo = 216 s) =====
@@ -226,14 +234,14 @@
 (timer 1747405800)                  ; NORMAL    (epoch real grande) => algun color
 (timer "100")                       ; ERROR: mod sobre un string -> type-error
 
-;; ===== Req 3: auditoria-quicklisp (Fase 2: local-time -> fecha legible en UTC) =====
-;; Recibe UN timestamp; imprime SOLO si entre (1- t) y t hubo cambio de color.
-;; Las transiciones del ciclo ocurren en las posiciones 90, 210 y 0 (=216).
-(auditoria-quicklisp 90)    ; NORMAL  => "Tiempo 1970-01-01 00:01:30: la luz ha cambiado de ROJO a VERDE"
-(auditoria-quicklisp 210)   ; NORMAL  => "Tiempo 1970-01-01 00:03:30: la luz ha cambiado de VERDE a AMARILLO"
-(auditoria-quicklisp 216)   ; NORMAL  => "Tiempo 1970-01-01 00:03:36: la luz ha cambiado de AMARILLO a ROJO"
-(auditoria-quicklisp 100)   ; ALTERNATIVO (no hay cambio) => NIL (no imprime nada)
-(auditoria-quicklisp "90")  ; ERROR: (- "90" 1) -> type-error (resta sobre un string)
+;; ===== Req 3: auditoria (Fase 2: local-time -> fecha legible en UTC) =====
+(auditar-cambio 1747405800 :rojo :verde)
+;   NORMAL  => "Tiempo [2025-05-16 14:30:00]: la luz ha cambiado de rojo a verde"
+;             (si local-time NO esta cargada, degrada a "Tiempo [1747405800]: ...")
+(auditar-cambio 0 :amarillo :rojo)
+;   ALTERNATIVO (epoch 0) => "Tiempo [1970-01-01 00:00:00]: la luz ha cambiado de amarillo a rojo"
+(auditar-cambio)                    ; ERROR: faltan argumentos requeridos
+(formatear-tiempo 1747405800)       ; AUXILIAR => "2025-05-16 14:30:00"
 
 ;; ===== Req 4: duracion-ciclo / recomendacion-ciclo =====
 (duracion-ciclo)                                  ; NORMAL  => 216
@@ -254,3 +262,4 @@
 ;;;; =====================================================================
 ;;;; FIN DE core.lisp
 ;;;; =====================================================================
+
