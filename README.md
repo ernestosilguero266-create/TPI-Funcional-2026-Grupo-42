@@ -57,6 +57,8 @@ TPI-Funcional-2026-Grupo-42/
 ├── docs/
 │   ├── INFORME.pdf    → Informe completo Fase 3 (OCaml)
 │   └── HONOR.md       → Código de Honor
+├── comparativa/
+│    └──solucion.ml
 └── README.md
 ```
 
