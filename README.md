@@ -1,76 +1,91 @@
-<div align="center">
+# 🚦 Sistema de Semáforos Inteligentes
 
+### Análisis Comparativo de Paradigmas de Programación
 
-🚦 Sistema de Semáforos Inteligentes
+**TPI Funcional 2026 — Grupo 42 · Universidad Nacional del Nordeste**
 
-Análisis Comparativo de Paradigmas de Programación
+![Common Lisp](https://img.shields.io/badge/Common%20Lisp-SBCL-blue?style=flat-square)
+![OCaml](https://img.shields.io/badge/OCaml-4.14-purple?style=flat-square)
+![Estado](https://img.shields.io/badge/Estado-Entregado-green?style=flat-square)
+![Paradigma](https://img.shields.io/badge/Paradigma-Funcional-orange?style=flat-square)
 
-TPI Funcional 2026 — Grupo 42
-Universidad Nacional del Nordeste
+---
 
-</div>
+## 👥 Integrantes
 
-👥 Integrantes
+| Nombre y Apellido | Usuario GitHub |
+|---|---|
+| Otero Manuel | [@Manuotero11](https://github.com/Manuotero11) |
+| Facundo Gastón Roda | [@Rodafacundogaston](https://github.com/Rodafacundogaston) |
+| Rodriguez Agustina Ailén | [@Agusrodriguez-hub](https://github.com/Agusrodriguez-hub) |
+| Joaquina Aymara Castañeda | [@Joacast](https://github.com/Joacast) |
+| Ernesto Silguero | [@Erness266](https://github.com/Erness266) |
 
-Nombre y ApellidoUsuario GitHubOtero Manuel@Manuotero11Facundo Gastón Roda@RodafacundogastonRodriguez Agustina Ailén@Agusrodriguez-hubJoaquina Aymara Castañeda@JoacastErnesto Silguero@Erness266
+---
 
+## 🔗 Enlaces de la Entrega
 
-🔗 Enlaces de la Entrega
+| Recurso | Link |
+|---|---|
+| 📁 Repositorio | [TPI-Funcional-2026-Grupo-42](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42.git) |
+| 🎥 Video de defensa | [Ver en YouTube](https://youtu.be/) |
+| 📄 Informe PDF | [Descargar informe](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/db5cca30eb8be51ec4ffc4e0d52a8ecd8f519904/docs/INFORME.pdf) |
+| ⚖️ Código de Honor | [docs/HONOR.md](docs/HONOR.md) |
 
-RecursoLink📁 RepositorioTPI-Funcional-2026-Grupo-42🎥 Video de defensaVer en YouTube📄 Informe PDFDescargar informe⚖️ Código de Honordocs/HONOR.md
+---
 
+## ▶️ Cómo ejecutar el programa
 
-▶️ Cómo ejecutar el programa
+### Fase 1 y 2 — Common Lisp
 
-Fase 1 y 2 — Common Lisp
+> **Requisitos:** [SBCL](http://www.sbcl.org/) + [Quicklisp](https://www.quicklisp.org/)
 
+```bash
+sbcl --load core.lisp
+```
 
-Requisitos: SBCL + Quicklisp
-
-
-
-bashsbcl --load core.lisp
-
-La Fase 2 integra la librería local-time via Quicklisp para mostrar timestamps legibles.
+La Fase 2 integra `local-time` via Quicklisp para mostrar timestamps legibles.
 Si Quicklisp no está instalado, el programa carga igual y degrada de forma segura.
 
-Fase 3 — OCaml
+### Fase 3 — OCaml
 
+> **Requisitos:** [OCaml](https://ocaml.org/) — o usá el navegador en [ocaml.org/play](https://ocaml.org/play)
 
-Requisitos: OCaml — o usá el navegador en ocaml.org/play
+```bash
+ocaml core_ocaml.ml
+```
 
+---
 
+## 📁 Estructura del Repositorio
 
-bashocaml core_ocaml.ml
-
-
-📁 Estructura del Repositorio
-
+```
 TPI-Funcional-2026-Grupo-42/
 ├── core.lisp          → Fases 1 y 2 — Common Lisp (Reqs 1–6 + local-time)
 ├── docs/
 │   ├── INFORME.pdf    → Informe completo Fase 3 (OCaml)
 │   └── HONOR.md       → Código de Honor
 └── README.md
+```
 
+---
 
-🧠 Sobre el proyecto
+## 🧠 Sobre el proyecto
 
-El sistema simula el cerebro lógico de un semáforo inteligente:
+El sistema simula el **cerebro lógico de un semáforo inteligente**:
 
+| # | Requerimiento | Descripción |
+|---|---|---|
+| 1 | 🔴 Transición | Determina si un cambio de color es válido |
+| 2 | ⏱️ Timer | Dado un timestamp, devuelve el color activo |
+| 3 | 📋 Auditoría | Registra cada cambio con fecha legible |
+| 4 | 📊 Análisis | Evalúa si la duración del ciclo es óptima |
+| 5 | 🗓️ Planificación | Ciclos completos que caben en un período |
+| 6 | 📈 Distribución | Porcentaje de tiempo de cada color por hora |
+| 7 | ✅ QA | Casos de prueba para cada requerimiento |
 
-🔴 Req 1 — Transición: determina si un cambio de color es válido (en-rojo → verde, etc.)
-⏱️ Req 2 — Timer: dado un timestamp Unix, devuelve el color activo en ese instante
-📋 Req 3 — Auditoría: registra cada cambio con fecha legible (via local-time)
-📊 Req 4 — Análisis: evalúa si la duración del ciclo es psicológicamente óptima
-🗓️ Req 5 — Planificación: calcula cuántos ciclos completos caben en un período
-📈 Req 6 — Distribución: porcentaje de tiempo de cada color por hora
-✅ Req 7 — QA: casos de prueba documentados para cada requerimiento
+> Ciclo: **rojo (90 s) → verde (120 s) → amarillo (6 s) = 216 s totales**
 
+---
 
-El ciclo es rojo (90s) → verde (120s) → amarillo (6s) = 216s por ciclo completo.
-
-
-<div align="center">
-<sub>Paradigmas y Lenguajes · 2026 · UNNE · Grupo 42</sub>
-</div>
+*Paradigmas y Lenguajes · 2026 · UNNE · Grupo 42*
