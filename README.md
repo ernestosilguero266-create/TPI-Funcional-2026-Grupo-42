@@ -1,33 +1,71 @@
+<div align="center">
+Mostrar imagen
+
+🚦 Sistema de Semáforos Inteligentes
+
+Análisis Comparativo de Paradigmas de Programación
+
 TPI Funcional 2026 — Grupo 42
+Universidad Nacional del Nordeste
 
-Sistema de Semáforos Inteligentes y Análisis Comparativo de Paradigmas
+</div>
 
-Integrantes
+👥 Integrantes
 
-Nombre y Apellido	Usuario GitHub
-Otero Manuel	Manuotero11
-Facundo Gaston Roda	Rodafacundogaston
-Rodriguez Agustina Ailén	Agusrodriguez-hub
-Joaquina Aymara Castañeda	Joacast
-Ernesto Silguero	Erness266
-Enlaces de la entrega:
+Nombre y ApellidoUsuario GitHubOtero Manuel@Manuotero11Facundo Gastón Roda@RodafacundogastonRodriguez Agustina Ailén@Agusrodriguez-hubJoaquina Aymara Castañeda@JoacastErnesto Silguero@Erness266
 
-Repositorio: https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42.git
 
-Video de defensa: https://youtu.be/
+🔗 Enlaces de la Entrega
 
-Como ejecutar el programa:
+RecursoLink📁 RepositorioTPI-Funcional-2026-Grupo-42🎥 Video de defensaVer en YouTube📄 Informe PDFDescargar informe⚖️ Código de Honordocs/HONOR.md
 
-Fase 1 y 2 — Common Lisp (SBCL + Quicklisp):
 
-Requisitos: SBCL y Quicklisp. La Fase 2 integra local-time con (ql:quickload "local-time"), por lo que Quicklisp debe estar instalado para cargar core.lisp.
+▶️ Cómo ejecutar el programa
 
-Fase 3 — OCaml:
+Fase 1 y 2 — Common Lisp
 
-Requisitos: OCaml (o en el navegador ocaml.org/play).
 
-INFORME:
+Requisitos: SBCL + Quicklisp
 
-https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/db5cca30eb8be51ec4ffc4e0d52a8ecd8f519904/docs/INFORME.pdf
 
-Código de Honor: docs/HONOR.md
+
+bashsbcl --load core.lisp
+
+La Fase 2 integra la librería local-time via Quicklisp para mostrar timestamps legibles.
+Si Quicklisp no está instalado, el programa carga igual y degrada de forma segura.
+
+Fase 3 — OCaml
+
+
+Requisitos: OCaml — o usá el navegador en ocaml.org/play
+
+
+
+bashocaml core_ocaml.ml
+
+
+📁 Estructura del Repositorio
+
+TPI-Funcional-2026-Grupo-42/
+├── core.lisp          → Fases 1 y 2 — Common Lisp (Reqs 1–6 + local-time)
+├── docs/
+│   ├── INFORME.pdf    → Informe completo Fase 3 (OCaml)
+│   └── HONOR.md       → Código de Honor
+└── README.md
+
+
+🧠 Sobre el proyecto
+
+El sistema simula el cerebro lógico de un semáforo inteligente:
+
+
+🔴 Req 1 — Transición: determina si un cambio de color es válido (en-rojo → verde, etc.)
+⏱️ Req 2 — Timer: dado un timestamp Unix, devuelve el color activo en ese instante
+📋 Req 3 — Auditoría: registra cada cambio con fecha legible (via local-time)
+📊 Req 4 — Análisis: evalúa si la duración del ciclo es psicológicamente óptima
+🗓️ Req 5 — Planificación: calcula cuántos ciclos completos caben en un período
+📈 Req 6 — Distribución: porcentaje de tiempo de cada color por hora
+✅ Req 7 — QA: casos de prueba documentados para cada requerimiento
+
+
+El ciclo es rojo (90s) → verde (120s) → amarillo (6s) = 216s por ciclo completo.
