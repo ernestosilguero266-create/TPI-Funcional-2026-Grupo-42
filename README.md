@@ -1,19 +1,18 @@
 ![Portada](PORTADA2.gif)
 
-# 🚦 Sistema de Semáforos Inteligentes
+Sistema de Semáforos Inteligentes
 
-### Análisis Comparativo de Paradigmas de Programación
+Análisis Comparativo de Paradigmas de Programación
 
-**TPI Funcional 2026 — Grupo 42 · Universidad Nacional del Nordeste**
+TPI Funcional 2026 — Grupo 42 · Universidad Nacional del Nordeste**
 
 ![Common Lisp](https://img.shields.io/badge/Common%20Lisp-SBCL-blue?style=flat-square)
 ![OCaml](https://img.shields.io/badge/OCaml-4.14-purple?style=flat-square)
 ![Estado](https://img.shields.io/badge/Estado-Entregado-green?style=flat-square)
 ![Paradigma](https://img.shields.io/badge/Paradigma-Funcional-orange?style=flat-square)
 
----
 
-## 👥 Integrantes
+Integrantes
 
 | Nombre y Apellido | Usuario GitHub |
 |---|---|
@@ -23,24 +22,21 @@
 | Joaquina Aymara Castañeda | [@Joacast](https://github.com/Joacast) |
 | Ernesto Silguero | [@Erness266](https://github.com/Erness266) |
 
----
 
-## 🔗 Enlaces de la Entrega
+Enlaces de la Entrega
 
 | Recurso | Link |
 |---|---|
-| 📁 Repositorio | [TPI-Funcional-2026-Grupo-42](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42.git) |
-| 🎥 Video de defensa | [Ver en YouTube](https://www.youtube.com/watch?v=e7jRBheWc54&t=4s) |
-| 📄 Informe PDF | [Descargar informe](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/db5cca30eb8be51ec4ffc4e0d52a8ecd8f519904/docs/INFORME.pdf) |
-| ⚖️ Código de Honor | [docs/HONOR.md](docs/HONOR.md) |
+|  Repositorio | [TPI-Funcional-2026-Grupo-42](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42.git) |
+|  Video de defensa | [Ver en YouTube](https://www.youtube.com/watch?v=e7jRBheWc54&t=4s) |
+|  Informe PDF | [Descargar informe](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/db5cca30eb8be51ec4ffc4e0d52a8ecd8f519904/docs/INFORME.pdf) |
+|  Código de Honor | [docs/HONOR.md](docs/HONOR.md) |
 
----
+ Cómo ejecutar el programa
 
-## ▶️ Cómo ejecutar el programa
+Fase 1 y 2 — Common Lisp
 
-### Fase 1 y 2 — Common Lisp
-
-> **Requisitos:** [SBCL](http://www.sbcl.org/) + [Quicklisp](https://www.quicklisp.org/)
+> Requisitos: [SBCL](http://www.sbcl.org/) + [Quicklisp](https://www.quicklisp.org/)
 
 ```bash
 sbcl --load core.lisp
@@ -49,17 +45,17 @@ sbcl --load core.lisp
 La Fase 2 integra `local-time` via Quicklisp para mostrar timestamps legibles.
 Si Quicklisp no está instalado, el programa carga igual y degrada de forma segura.
 
-### Fase 3 — OCaml
+Fase 3 — OCaml
 
-> **Requisitos:** [OCaml](https://ocaml.org/) — o usá el navegador en [ocaml.org/play](https://ocaml.org/play)
+> Requisitos: [OCaml](https://ocaml.org/) — o usá el navegador en [ocaml.org/play](https://ocaml.org/play)
 
 ```bash
 ocaml core_ocaml.ml
 ```
 
----
 
-## 📁 Estructura del Repositorio
+
+Estructura del Repositorio
 
 ```
 TPI-Funcional-2026-Grupo-42/
@@ -70,24 +66,22 @@ TPI-Funcional-2026-Grupo-42/
 └── README.md
 ```
 
----
 
-## 🧠 Sobre el proyecto
+Sobre el proyecto
 
 El sistema simula el **cerebro lógico de un semáforo inteligente**:
 
 | # | Requerimiento | Descripción |
 |---|---|---|
-| 1 | 🔴 Transición | Determina si un cambio de color es válido |
-| 2 | ⏱️ Timer | Dado un timestamp, devuelve el color activo |
-| 3 | 📋 Auditoría | Registra cada cambio con fecha legible |
-| 4 | 📊 Análisis | Evalúa si la duración del ciclo es óptima |
-| 5 | 🗓️ Planificación | Ciclos completos que caben en un período |
-| 6 | 📈 Distribución | Porcentaje de tiempo de cada color por hora |
-| 7 | ✅ QA | Casos de prueba para cada requerimiento |
+| 1 |  Transición | Determina si un cambio de color es válido |
+| 2 |  Timer | Dado un timestamp, devuelve el color activo |
+| 3 |  Auditoría | Registra cada cambio con fecha legible |
+| 4 |  Análisis | Evalúa si la duración del ciclo es óptima |
+| 5 |  Planificación | Ciclos completos que caben en un período |
+| 6 |  Distribución | Porcentaje de tiempo de cada color por hora |
+| 7 |  QA | Casos de prueba para cada requerimiento |
 
-> Ciclo: **rojo (90 s) → verde (120 s) → amarillo (6 s) = 216 s totales**
+> Ciclo: rojo (90 s) → verde (120 s) → amarillo (6 s) = 216 s totales
 
----
 
-*Paradigmas y Lenguajes · 2026 · UNNE · Grupo 42*
+Paradigmas y Lenguajes · 2026 · UNNE · Grupo 42
