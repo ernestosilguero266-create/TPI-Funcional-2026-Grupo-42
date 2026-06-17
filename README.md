@@ -1,4 +1,4 @@
-![Portada](https://raw.githubusercontent.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/87953051bebe0310c492834fbac696770ea424c9/portada.svg)
+![Portada](https://raw.githubusercontent.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/main/portada.svg)
 
 TPI Funcional 2026 — Grupo 42 
 
