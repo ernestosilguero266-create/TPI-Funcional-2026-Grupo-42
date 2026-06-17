@@ -208,7 +208,7 @@
 
 
 ;;; =====================================================================
-;;; REQUERIMIENTO 7: Aseguramiento de la calidad (ejemplos de uso)
+;;; REQUERIMIENTO 7: Aseguramiento de la calidad (ejemplos de uso)  MANUEL OTERO
 ;;; ---------------------------------------------------------------------
 ;;; Bloque listo para COPIAR Y PEGAR en el REPL. Cubre, por requerimiento,
 ;;; un caso normal, un camino alternativo y un caso que genera error.
