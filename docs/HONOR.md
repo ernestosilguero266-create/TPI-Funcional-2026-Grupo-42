@@ -101,3 +101,23 @@ Integrante 4: Rodriguez Agustina Ailén — Usuario GitHub: Agusrodriguez-hub
 
 > Declaración Jurada: declaro bajo compromiso de honor que las marcas anteriores
 > reflejan fielmente mi participación y la naturaleza del desarrollo de este TP.
+>
+> Integrante 5: Manuel Otero — Usuario GitHub: manuotero11
+
+1. Código en Common Lisp (Fase 1 y 2)
+- [ ] Desarrollo 100% Humano
+- [X] Asistencia de IA (Co-piloto)
+- [ ] Generación Completa por IA
+
+2. Código del Lenguaje Asignado — OCaml (Fase 3)
+- [ ] Desarrollo 100% Humano
+- [X] Asistencia de IA
+- [ ] Generación Completa por IA
+
+3. Redacción del Informe y Respuestas Teóricas
+- [ ] Autoría Propia
+- [X] Redacción Asistida / Generada
+- [ ] Generación completa por IA
+
+> Declaración Jurada: declaro bajo compromiso de honor que las marcas anteriores
+> reflejan fielmente mi participación y la naturaleza del desarrollo de este TP.
