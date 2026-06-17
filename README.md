@@ -28,7 +28,7 @@
 | Recurso | Link |
 |---|---|
 | 📁 Repositorio | [TPI-Funcional-2026-Grupo-42](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42.git) |
-| 🎥 Video de defensa | [Ver en YouTube]([https://youtu.be/](https://www.youtube.com/watch?v=e7jRBheWc54&t=4s)) |
+| 🎥 Video de defensa | [Ver en YouTube](https://www.youtube.com/watch?v=e7jRBheWc54&t=4s) |
 | 📄 Informe PDF | [Descargar informe](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/db5cca30eb8be51ec4ffc4e0d52a8ecd8f519904/docs/INFORME.pdf) |
 | ⚖️ Código de Honor | [docs/HONOR.md](docs/HONOR.md) |
 
