@@ -1,4 +1,4 @@
-![Portada](portada.png)
+![Portada](portada.svg)
 
 TPI Funcional 2026 — Grupo 42 
 
