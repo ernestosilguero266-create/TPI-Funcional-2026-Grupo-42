@@ -41,7 +41,8 @@ Requisitos: [OCaml](https://ocaml.org/) (o el entorno en línea
 [ocaml.org/play](https://ocaml.org/play)).
 
 INFORME
-docs/INFORME.pdf
+
+[docs/INFORME.pdf](https://github.com/ernestosilguero266-create/TPI-Funcional-2026-Grupo-42/blob/f6830e85a2e54f617ecc47bf428b78a217246a14/docs/HONOR.md)
 
 Código de Honor
 docs/HONOR.md
