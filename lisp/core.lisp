@@ -180,7 +180,8 @@
 (defun ciclos-por-tiempo (minutos &optional (tiempos (tiempos-por-defecto)))
   (floor (* minutos 60) (duracion-ciclo tiempos)))
 
-
+ ;MANUEL OTERO
+ 
 ;;; =====================================================================
 ;;; REQUERIMIENTO 6: Informe de Distribucion Temporal
 ;;; =====================================================================
