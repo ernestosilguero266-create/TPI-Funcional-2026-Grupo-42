@@ -1,4 +1,4 @@
-(* ADT: un estado/color invalido es IMPOSIBLE de construir; el compilador lo rechaza. *)
+(* ADT: un estado/color invalido es IMPOSIBLE de construir; el compilador lo rechaza. *) Rodriguez Agustina Ailén
 type estado = En_rojo | En_amarillo | En_verde
 type color  = Rojo | Amarillo | Verde
 
