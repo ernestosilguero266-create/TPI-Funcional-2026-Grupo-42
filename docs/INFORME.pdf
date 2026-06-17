@@ -1,0 +1,522 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 10 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R 21 0 R 23 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 3580 >>
+stream
+BT /F2 16.0 Tf 54.0 730.0 Td (Trabajo Práctico Integrador 2026) Tj ET
+BT /F2 13.0 Tf 54.0 698.8 Td (Sistema de Semáforos Inteligentes y Análisis Comparativo de Paradigmas) Tj ET
+BT /F1 9.5 Tf 54.0 674.9 Td (Materia: Programación Funcional) Tj ET
+BT /F1 9.5 Tf 54.0 661.2 Td (Grupo: 42) Tj ET
+BT /F1 9.5 Tf 54.0 647.4 Td (Lenguaje asignado \(Fase 3\): OCaml) Tj ET
+BT /F1 9.5 Tf 54.0 633.6 Td (Fecha de entrega: 16 de junio de 2026) Tj ET
+BT /F2 11.5 Tf 54.0 606.9 Td (Integrantes) Tj ET
+BT /F1 9.0 Tf 54.0 585.2 Td (| # | Nombre y Apellido | Usuario de GitHub |) Tj ET
+BT /F1 9.0 Tf 54.0 572.1 Td (|---|-------------------|-------------------|) Tj ET
+BT /F1 9.0 Tf 54.0 559.1 Td (| 1 | \(completar\)       | \(completar\)       |) Tj ET
+BT /F1 9.0 Tf 54.0 546.0 Td (| 2 | \(completar\)       | \(completar\)       |) Tj ET
+BT /F1 9.0 Tf 54.0 533.0 Td (| 3 | \(completar\)       | \(completar\)       |) Tj ET
+BT /F1 9.0 Tf 54.0 519.9 Td (| 4 | \(completar\)       | \(completar\)       |) Tj ET
+BT /F1 9.5 Tf 54.0 501.9 Td (----------------------------------------------------------------------------------------) Tj ET
+BT /F2 13.0 Tf 54.0 475.1 Td (1. Introducción y contexto) Tj ET
+BT /F1 9.5 Tf 54.0 451.3 Td (Las ciudades modernas requieren sistemas de tráfico inteligentes para optimizar) Tj ET
+BT /F1 9.5 Tf 54.0 437.5 Td (el flujo vehicular y garantizar la seguridad vial. En este trabajo desarrollamos) Tj ET
+BT /F1 9.5 Tf 54.0 423.7 Td (el núcleo lógico de un sistema embebido de control de semáforos para) Tj ET
+BT /F1 9.5 Tf 54.0 409.9 Td (intersecciones críticas, implementado en Common Lisp aplicando estrictamente) Tj ET
+BT /F1 9.5 Tf 54.0 396.2 Td (el paradigma funcional: funciones puras, inmutabilidad y composición.) Tj ET
+BT /F1 9.5 Tf 54.0 377.4 Td (El trabajo se organiza en tres fases:) Tj ET
+BT /F1 9.5 Tf 54.0 358.6 Td (* Fase 1: lógica de control \(Requerimientos 1 a 6\) en Common Lisp.) Tj ET
+BT /F1 9.5 Tf 54.0 344.8 Td (* Fase 2: integración del ecosistema con el gestor de paquetes Quicklisp) Tj ET
+BT /F1 9.5 Tf 54.0 331.1 Td (\(librería local-time\): la auditoría \(Req 3\) pasa a mostrar la fecha y hora) Tj ET
+BT /F1 9.5 Tf 54.0 317.3 Td (en formato legible en lugar del epoch Unix.) Tj ET
+BT /F1 9.5 Tf 54.0 303.5 Td (* Fase 3: reimplementación de transicion y timer en OCaml y análisis) Tj ET
+BT /F1 9.5 Tf 54.0 289.7 Td (comparativo entre paradigmas.) Tj ET
+BT /F1 9.5 Tf 54.0 271.0 Td (----------------------------------------------------------------------------------------) Tj ET
+BT /F2 13.0 Tf 54.0 244.2 Td (2. Fase 1 - Diseño funcional adoptado) Tj ET
+BT /F2 11.5 Tf 54.0 212.3 Td (2.1 Principios aplicados) Tj ET
+BT /F1 9.5 Tf 54.0 190.7 Td (Todo el núcleo \(lisp/core.lisp\) respeta las Restricciones de Diseño) Tj ET
+BT /F1 9.5 Tf 54.0 176.9 Td (impuestas por la cátedra:) Tj ET
+BT /F1 9.5 Tf 54.0 158.1 Td (1. Inmutabilidad absoluta. No usamos defparameter/defvar para guardar) Tj ET
+BT /F1 9.5 Tf 54.0 144.3 Td (estados cambiantes, ni operadores destructivos \(setq, setf\). El estado del) Tj ET
+BT /F1 9.5 Tf 54.0 130.6 Td (tráfico \(el color\) y el tiempo \(el timestamp Unix\) fluyen únicamente como) Tj ET
+BT /F1 9.5 Tf 54.0 116.8 Td (argumentos de las funciones. La configuración de tiempos se modela como una) Tj ET
+BT /F1 9.5 Tf 54.0 103.0 Td (lista de asociación \(alist\) que se construye fresca en cada llamada a) Tj ET
+BT /F1 9.5 Tf 54.0 89.2 Td (tiempos-por-defecto; nadie comparte ni puede mutar ese estado.) Tj ET
+BT /F1 9.5 Tf 54.0 70.5 Td (2. Cero bucles imperativos. No usamos loop, dolist, dotimes ni while.) Tj ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 4531 >>
+stream
+BT /F1 9.5 Tf 54.0 738.0 Td (Toda iteración se resuelve con:) Tj ET
+BT /F1 9.5 Tf 54.0 724.2 Td (   * Recursividad de cola \(color-en-posicion\), optimizada por SBCL para no) Tj ET
+BT /F1 9.5 Tf 54.0 710.5 Td (consumir pila.) Tj ET
+BT /F1 9.5 Tf 54.0 696.7 Td (   * Funciones de orden superior \(mapcar, reduce\) en duracion-ciclo y) Tj ET
+BT /F1 9.5 Tf 54.0 682.9 Td (distribucion-horaria.) Tj ET
+BT /F1 9.5 Tf 54.0 664.1 Td (3. Composición. Funciones pequeñas y puras se combinan para resolver) Tj ET
+BT /F1 9.5 Tf 54.0 650.4 Td (problemas mayores: timer se apoya en duracion-ciclo y color-en-posicion;) Tj ET
+BT /F1 9.5 Tf 54.0 636.6 Td (ciclos-por-tiempo y distribucion-horaria reutilizan duracion-ciclo;) Tj ET
+BT /F1 9.5 Tf 54.0 622.8 Td (auditoria-quicklisp reutiliza timer para detectar el cambio de color.) Tj ET
+BT /F2 11.5 Tf 54.0 596.0 Td (2.2 Modelo de datos) Tj ET
+BT /F1 9.5 Tf 54.0 574.4 Td (* Estados del semáforo: símbolos en-rojo, en-amarillo, en-verde.) Tj ET
+BT /F1 9.5 Tf 54.0 560.6 Td (* Colores destino: símbolos rojo, amarillo, verde.) Tj ET
+BT /F1 9.5 Tf 54.0 546.8 Td (* Configuración de tiempos: alist \(\(:rojo . 90\) \(:amarillo . 6\) \(:verde . 120\)\),) Tj ET
+BT /F1 9.5 Tf 54.0 533.0 Td (construida fresca por la función pura tiempos-por-defecto \(no es una variable) Tj ET
+BT /F1 9.5 Tf 54.0 519.3 Td (global mutable\). Al recibirse siempre por argumento, la fuente de los tiempos) Tj ET
+BT /F1 9.5 Tf 54.0 505.5 Td (podría intercambiarse sin tocar el resto del código.) Tj ET
+BT /F1 9.5 Tf 54.0 491.7 Td (* Secuencia temporal real: rojo -> verde -> amarillo -> \(rojo\). Es la base) Tj ET
+BT /F1 9.5 Tf 54.0 477.9 Td (tanto del temporizador como de la tabla de transiciones válidas.) Tj ET
+BT /F2 11.5 Tf 54.0 451.2 Td (2.3 Requerimientos implementados) Tj ET
+BT /F1 9.0 Tf 54.0 429.5 Td (| Req | Función\(es\) | Qué resuelve |) Tj ET
+BT /F1 9.0 Tf 54.0 416.4 Td (|-----|-------------|--------------|) Tj ET
+BT /F1 9.0 Tf 54.0 403.4 Td (| 1 | transicion | Estado siguiente + acción "cambiar-a-<color>"; accion-por-defecto si la) Tj ET
+BT /F1 9.0 Tf 54.0 390.3 Td (transición no es válida. |) Tj ET
+BT /F1 9.0 Tf 54.0 377.3 Td (| 2 | timer, color-en-posicion | Color activo en un timestamp Unix dado \(ciclo de 216 s\). |) Tj ET
+BT /F1 9.0 Tf 54.0 364.2 Td (| 3 | auditoria-quicklisp | Logging forense del cambio de estado: deriva los colores con) Tj ET
+BT /F1 9.0 Tf 54.0 351.2 Td (timer y muestra la fecha legible con local-time. |) Tj ET
+BT /F1 9.0 Tf 54.0 338.1 Td (| 4 | duracion-ciclo, recomendacion-ciclo | Duración total del ciclo y recomendación según la) Tj ET
+BT /F1 9.0 Tf 54.0 325.1 Td (regla psicológica \(35-150 s\). |) Tj ET
+BT /F1 9.0 Tf 54.0 312.0 Td (| 5 | ciclos-por-tiempo | Cantidad de ciclos completos en N minutos. |) Tj ET
+BT /F1 9.0 Tf 54.0 299.0 Td (| 6 | distribucion-horaria | Porcentaje de tiempo de cada color en 1 hora. |) Tj ET
+BT /F1 9.0 Tf 54.0 285.9 Td (| 7 | bloque de ejemplos | Casos normal / alternativo / error, listos para copiar y pegar. |) Tj ET
+BT /F1 9.5 Tf 54.0 267.9 Td (Interpretaciones de ambigüedades del enunciado \(documentadas para) Tj ET
+BT /F1 9.5 Tf 54.0 254.1 Td (transparencia\):) Tj ET
+BT /F1 9.5 Tf 54.0 235.3 Td (* Req 1 - salida de transicion. El enunciado da como ejemplo) Tj ET
+BT /F1 9.5 Tf 54.0 221.6 Td (\(transicion 'en-rojo 'verde\) -> \('en-rojo "cambiar-a-verde"\): la lista contiene) Tj ET
+BT /F1 9.5 Tf 54.0 207.8 Td (el estado actual y la acción \(un literal string\). Respetamos esa forma) Tj ET
+BT /F1 9.5 Tf 54.0 194.0 Td (exacta. Las transiciones válidas siguen el ciclo real: en-rojo->verde,) Tj ET
+BT /F1 9.5 Tf 54.0 180.2 Td (en-verde->amarillo, en-amarillo->rojo.) Tj ET
+BT /F1 9.5 Tf 54.0 166.5 Td (* Req 4 - entrada de duracion-ciclo. El texto pide "calcular la duración que) Tj ET
+BT /F1 9.5 Tf 54.0 152.7 Td (tendrá cada ciclo con las reglas de negocio actuales". Interpretamos que la) Tj ET
+BT /F1 9.5 Tf 54.0 138.9 Td (entrada es la configuración de tiempos \(no un único número suelto\) y la) Tj ET
+BT /F1 9.5 Tf 54.0 125.1 Td (salida, el total del ciclo \(90+6+120 = 216 s\). La evaluación psicológica del) Tj ET
+BT /F1 9.5 Tf 54.0 111.4 Td (rango 35-150 s se delega en recomendacion-ciclo.) Tj ET
+BT /F1 9.5 Tf 54.0 97.6 Td (* Req 6 - "porcentaje en 1 hora". Como el patrón es periódico, el porcentaje de) Tj ET
+BT /F1 9.5 Tf 54.0 83.8 Td (cada color es la proporción dentro del ciclo, independiente de la hora:) Tj ET
+BT /F1 9.5 Tf 54.0 70.0 Td (rojo ~ 41,67 %, amarillo ~ 2,78 %, verde ~ 55,56 %.) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 4168 >>
+stream
+BT /F2 11.5 Tf 54.0 730.0 Td (2.4 Clasificación taxonómica de las funciones) Tj ET
+BT /F1 9.5 Tf 54.0 708.3 Td (Cada función lleva en el código su encabezado de clasificación. Resumen:) Tj ET
+BT /F1 9.0 Tf 54.0 689.6 Td (| Función | Naturaleza | Estrategia de control | Impacto en memoria |) Tj ET
+BT /F1 9.0 Tf 54.0 676.5 Td (|---------|-----------|------------------------|--------------------|) Tj ET
+BT /F1 9.0 Tf 54.0 663.5 Td (| tiempos-por-defecto | Pura | Constructora simple | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 650.4 Td (| tiempo-de | Pura | Consulta/accesor \(assoc\) | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 637.4 Td (| secuencia-temporal | Pura | Constructora simple | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 624.3 Td (| duracion-ciclo | Pura | Orden superior \(mapcar+reduce\) | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 611.3 Td (| transiciones-validas | Pura | Constructora simple | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 598.2 Td (| transicion | Pura | Predicado + condicional | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 585.2 Td (| color-en-posicion | Pura | Recursiva de cola | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 572.1 Td (| timer | Pura | Composición | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 559.1 Td (| auditoria-quicklisp | Impura \(imprime en pantalla\) | Selección por condición \(if\) + interop) Tj ET
+BT /F1 9.0 Tf 54.0 546.0 Td (local-time | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 533.0 Td (| recomendacion-ciclo | Pura | Predicado \(cond\) | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 519.9 Td (| ciclos-por-tiempo | Pura | Composición \(floor\) | No destructiva |) Tj ET
+BT /F1 9.0 Tf 54.0 506.9 Td (| distribucion-horaria | Pura | Orden superior \(mapcar\) | No destructiva |) Tj ET
+BT /F1 9.5 Tf 54.0 488.8 Td (----------------------------------------------------------------------------------------) Tj ET
+BT /F2 13.0 Tf 54.0 462.0 Td (3. Fase 2 - Autonomía y ecosistema \(Quicklisp\)) Tj ET
+BT /F2 11.5 Tf 54.0 430.2 Td (3.1 Quicklisp) Tj ET
+BT /F1 9.5 Tf 54.0 408.5 Td (Quicklisp es el gestor de paquetes de facto de) Tj ET
+BT /F1 9.5 Tf 54.0 394.7 Td (Common Lisp. Se instala cargando quicklisp.lisp y ejecutando) Tj ET
+BT /F1 9.5 Tf 54.0 381.0 Td (\(quicklisp-quickstart:install\); luego, cada librería se carga con) Tj ET
+BT /F1 9.5 Tf 54.0 367.2 Td (\(ql:quickload "nombre"\). En core.lisp integramos local-time así:) Tj ET
+BT /F1 9.0 Tf 54.0 344.4 Td (    \(eval-when \(:compile-toplevel :load-toplevel :execute\)) Tj ET
+BT /F1 9.0 Tf 54.0 331.4 Td (      \(ql:quickload "local-time"\)\)) Tj ET
+BT /F1 9.5 Tf 54.0 309.3 Td (El eval-when garantiza que la librería se cargue tanto al interpretar/cargar) Tj ET
+BT /F1 9.5 Tf 54.0 295.5 Td (\(load\) como al compilar \(compile-file\) el archivo, de modo que los símbolos) Tj ET
+BT /F1 9.5 Tf 54.0 281.8 Td (cualificados local-time:... ya existan cuando el reader lee la función de) Tj ET
+BT /F1 9.5 Tf 54.0 268.0 Td (auditoría. Se asume Quicklisp instalado, que es precisamente el objetivo de la) Tj ET
+BT /F1 9.5 Tf 54.0 254.2 Td (Fase 2 \(investigar e integrar el gestor de paquetes\).) Tj ET
+BT /F2 11.5 Tf 54.0 227.4 Td (3.2 Librería seleccionada y justificación) Tj ET
+BT /F1 9.5 Tf 54.0 205.8 Td (La consigna pide integrar una \(1\) de las dos librerías propuestas. Integramos) Tj ET
+BT /F1 9.5 Tf 54.0 192.0 Td (local-time.) Tj ET
+BT /F1 9.5 Tf 54.0 173.2 Td (local-time - auditoría legible para humanos \(Req 3\).) Tj ET
+BT /F1 9.5 Tf 54.0 159.4 Td (La versión base del Requerimiento 3 imprime el instante en formato Unix \(epoch\),) Tj ET
+BT /F1 9.5 Tf 54.0 145.7 Td (un entero como 1747405800 que es ilegible para un analista forense. Con) Tj ET
+BT /F1 9.5 Tf 54.0 131.9 Td (local-time la auditoría muestra la fecha y hora en formato humano) Tj ET
+BT /F1 9.5 Tf 54.0 118.1 Td (AAAA-MM-DD HH:MM:SS. La función auditoria-quicklisp recibe un único) Tj ET
+BT /F1 9.5 Tf 54.0 104.3 Td (timestamp, deriva con timer el color del segundo anterior y el actual, y -si) Tj ET
+BT /F1 9.5 Tf 54.0 90.6 Td (hubo un cambio- lo registra con la fecha ya formateada:) Tj ET
+BT /F1 9.0 Tf 54.0 67.8 Td (    \(defun auditoria-quicklisp \(timestamp\)) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 4280 >>
+stream
+BT /F1 9.0 Tf 54.0 738.0 Td (      \(let \(\(color-anterior \(timer \(- timestamp 1\)\)\)) Tj ET
+BT /F1 9.0 Tf 54.0 725.0 Td (            \(color-actual   \(timer timestamp\)\)\)) Tj ET
+BT /F1 9.0 Tf 54.0 711.9 Td (        \(if \(not \(equal color-anterior color-actual\)\)) Tj ET
+BT /F1 9.0 Tf 54.0 698.9 Td (            \(format t "Tiempo ~A: la luz ha cambiado de ~A a ~A~%") Tj ET
+BT /F1 9.0 Tf 54.0 685.8 Td (                    \(local-time:format-timestring nil) Tj ET
+BT /F1 9.0 Tf 54.0 672.8 Td (                      \(local-time:unix-to-timestamp timestamp\)) Tj ET
+BT /F1 9.0 Tf 54.0 659.7 Td (                      :format '\(\(:year 4\) "-" \(:month 2\) "-" \(:day 2\)) Tj ET
+BT /F1 9.0 Tf 54.0 646.7 Td (                                " " \(:hour 2\) ":" \(:min 2\) ":" \(:sec 2\)\)) Tj ET
+BT /F1 9.0 Tf 54.0 633.6 Td (                      :timezone local-time:+utc-zone+\)) Tj ET
+BT /F1 9.0 Tf 54.0 620.6 Td (                    color-anterior) Tj ET
+BT /F1 9.0 Tf 54.0 607.5 Td (                    color-actual\)\)\)\)) Tj ET
+BT /F1 9.5 Tf 54.0 585.5 Td (unix-to-timestamp convierte el epoch a un timestamp de local-time, y) Tj ET
+BT /F1 9.5 Tf 54.0 571.7 Td (format-timestring lo compone con una lista de directivas. El formato se fija en) Tj ET
+BT /F1 9.5 Tf 54.0 557.9 Td (UTC \(+utc-zone+\) para que la salida sea determinista y no dependa de la) Tj ET
+BT /F1 9.5 Tf 54.0 544.1 Td (zona horaria de la máquina \(ver bitácora, Bug 5\).) Tj ET
+BT /F1 9.5 Tf 54.0 525.4 Td (Justificación. Frente a la alternativa \(cl-json, que externaliza los tiempos) Tj ET
+BT /F1 9.5 Tf 54.0 511.6 Td (a un .json\), local-time ataca un problema real de calidad del dato de) Tj ET
+BT /F1 9.5 Tf 54.0 497.8 Td (auditoría: la reconstrucción histórica de estados \(el propósito explícito del) Tj ET
+BT /F1 9.5 Tf 54.0 484.0 Td (Req 3\) exige fechas legibles, no enteros epoch. Además, el manejo correcto de) Tj ET
+BT /F1 9.5 Tf 54.0 470.3 Td (fechas, time zones y formateo es notoriamente propenso a errores si se hace a) Tj ET
+BT /F1 9.5 Tf 54.0 456.5 Td (mano, por lo que apoyarse en una librería estándar y probada es la decisión de) Tj ET
+BT /F1 9.5 Tf 54.0 442.7 Td (ingeniería más sólida. La integración es mínimamente invasiva: sólo cambia el) Tj ET
+BT /F1 9.5 Tf 54.0 428.9 Td (borde de presentación del Req 3; el resto del núcleo \(Req 1, 2, 4, 5, 6\) permanece) Tj ET
+BT /F1 9.5 Tf 54.0 415.2 Td (intacto y agnóstico de la librería.) Tj ET
+BT /F2 11.5 Tf 54.0 388.4 Td (3.3 Pureza vs. impureza en la integración) Tj ET
+BT /F1 9.5 Tf 54.0 366.7 Td (auditoria-quicklisp es impura: su propósito es el efecto de escribir en la) Tj ET
+BT /F1 9.5 Tf 54.0 352.9 Td (terminal \(logging\). Aun así, todo el cálculo que la alimenta es puro:) Tj ET
+BT /F1 9.5 Tf 54.0 339.2 Td (timer \(que deriva los colores\) y local-time:format-timestring /) Tj ET
+BT /F1 9.5 Tf 54.0 325.4 Td (unix-to-timestamp \(que arman la fecha en UTC\) no tienen efectos secundarios ni) Tj ET
+BT /F1 9.5 Tf 54.0 311.6 Td (mutan estructuras \(es no destructiva\). Se respeta así el patrón funcional) Tj ET
+BT /F1 9.5 Tf 54.0 297.8 Td (clásico de "núcleo puro, cáscara impura": el efecto queda aislado en un único) Tj ET
+BT /F1 9.5 Tf 54.0 284.1 Td (borde \(el format\), mientras el resto del sistema permanece puro.) Tj ET
+BT /F1 9.5 Tf 54.0 265.3 Td (----------------------------------------------------------------------------------------) Tj ET
+BT /F2 13.0 Tf 54.0 238.5 Td (4. Bitácora de Depuración) Tj ET
+BT /F1 9.5 Tf 54.0 214.7 Td (  | Se documentan de forma cruda los errores conceptuales surgidos en el desarrollo.) Tj ET
+BT /F1 9.5 Tf 54.0 200.9 Td (  | Cada bug incluye un espacio para la captura de pantalla del REPL y el) Tj ET
+BT /F1 9.5 Tf 54.0 187.1 Td (  | texto exacto que debe verse en ella.) Tj ET
+BT /F2 11.5 Tf 54.0 160.3 Td (Bug 1 - La lista citada '\(...\) no evalúa las variables) Tj ET
+BT /F1 9.5 Tf 54.0 138.7 Td (Síntoma. La primera versión de transicion devolvía el símbolo literal) Tj ET
+BT /F1 9.5 Tf 54.0 124.9 Td (COLOR-ACTUAL en vez de su valor:) Tj ET
+BT /F1 9.0 Tf 54.0 102.1 Td (    ;; INCORRECTO) Tj ET
+BT /F1 9.0 Tf 54.0 89.1 Td (    \(defun transicion \(color-actual cambiar-a\)) Tj ET
+BT /F1 9.0 Tf 54.0 76.0 Td (      '\(color-actual "cambiar-a-verde"\)\)) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 14 0 R >>
+endobj
+14 0 obj
+<< /Length 3596 >>
+stream
+BT /F1 9.0 Tf 54.0 738.0 Td (    ) Tj ET
+BT /F1 9.0 Tf 54.0 725.0 Td (    \(transicion 'en-rojo 'verde\)) Tj ET
+BT /F1 9.0 Tf 54.0 711.9 Td (    => \(COLOR-ACTUAL "cambiar-a-verde"\)   ; <- esperábamos \(EN-ROJO ...\)) Tj ET
+BT /F1 9.5 Tf 54.0 689.9 Td (Causa. El quote '\(...\) suprime la evaluación de todo lo que contiene,) Tj ET
+BT /F1 9.5 Tf 54.0 676.1 Td (incluidos los nombres de variable: Lisp devuelve el símbolo color-actual, no el) Tj ET
+BT /F1 9.5 Tf 54.0 662.3 Td (argumento.) Tj ET
+BT /F1 9.5 Tf 54.0 643.5 Td (Solución. Construir la lista con list, que sí evalúa sus argumentos:) Tj ET
+BT /F1 9.0 Tf 54.0 620.8 Td (    \(list color-actual \(format nil "cambiar-a-~\(~a~\)" cambiar-a\)\)) Tj ET
+BT /F1 9.5 Tf 54.0 598.7 Td ([CAPTURA 1: REPL mostrando primero \(COLOR-ACTUAL ...\) y luego \(EN-ROJO) Tj ET
+BT /F1 9.5 Tf 54.0 584.9 Td ("cambiar-a-verde"\)]) Tj ET
+BT /F2 11.5 Tf 54.0 558.2 Td (Bug 2 - defconstant con listas falla al recargar el archivo) Tj ET
+BT /F1 9.5 Tf 54.0 536.5 Td (Síntoma. Habíamos definido la tabla de transiciones como constante global:) Tj ET
+BT /F1 9.0 Tf 54.0 513.7 Td (    \(defconstant +transiciones+ '\(\(en-rojo . verde\) ...\)\)) Tj ET
+BT /F1 9.5 Tf 54.0 491.7 Td (Al recargar core.lisp por segunda vez SBCL abortaba con:) Tj ET
+BT /F1 9.0 Tf 54.0 468.9 Td (    The constant +TRANSICIONES+ is being redefined \(from \(\(EN-ROJO . VERDE\) ...\)) Tj ET
+BT /F1 9.0 Tf 54.0 455.8 Td (    to \(\(EN-ROJO . VERDE\) ...\)\)) Tj ET
+BT /F1 9.5 Tf 54.0 433.8 Td (Causa. defconstant exige que el valor nuevo sea eql al anterior. Dos) Tj ET
+BT /F1 9.5 Tf 54.0 420.0 Td (listas con el mismo contenido no son eql \(son objetos distintos en memoria\),) Tj ET
+BT /F1 9.5 Tf 54.0 406.2 Td (así que cada recarga se interpreta como una redefinición ilegal.) Tj ET
+BT /F1 9.5 Tf 54.0 387.5 Td (Solución. Reemplazamos las "constantes" por funciones puras de cero) Tj ET
+BT /F1 9.5 Tf 54.0 373.7 Td (argumentos \(transiciones-validas, tiempos-por-defecto, secuencia-temporal\)) Tj ET
+BT /F1 9.5 Tf 54.0 359.9 Td (que devuelven una lista fresca. Esto además refuerza la inmutabilidad: no hay) Tj ET
+BT /F1 9.5 Tf 54.0 346.1 Td (estado global, sólo funciones.) Tj ET
+BT /F1 9.5 Tf 54.0 327.4 Td ([CAPTURA 2: REPL con el error "constant ... is being redefined"]) Tj ET
+BT /F2 11.5 Tf 54.0 300.6 Td (Bug 3 - Desborde de pila por recursión mal planteada) Tj ET
+BT /F1 9.5 Tf 54.0 278.9 Td (Síntoma. Una versión temprana de color-en-posicion no reducía la posición) Tj ET
+BT /F1 9.5 Tf 54.0 265.1 Td (ni acotaba con mod, y entraba en recursión infinita:) Tj ET
+BT /F1 9.0 Tf 54.0 242.4 Td (    Control stack exhausted \(no more space for function call frames\).) Tj ET
+BT /F1 9.5 Tf 54.0 220.3 Td (Causa. El caso base \(posicion < duracion\) nunca se alcanzaba porque la) Tj ET
+BT /F1 9.5 Tf 54.0 206.5 Td (llamada recursiva no decrementaba posicion, y timer pasaba el timestamp) Tj ET
+BT /F1 9.5 Tf 54.0 192.8 Td (completo \(millones\) sin \(mod timestamp ciclo\). La pila se agotó.) Tj ET
+BT /F1 9.5 Tf 54.0 174.0 Td (Solución. \(a\) timer normaliza con \(mod timestamp \(duracion-ciclo ...\)\);) Tj ET
+BT /F1 9.5 Tf 54.0 160.2 Td (\(b\) color-en-posicion resta la duración en cada paso -\(- posicion duracion\)-) Tj ET
+BT /F1 9.5 Tf 54.0 146.4 Td (de forma tail-recursive, garantizando que el caso base se alcance.) Tj ET
+BT /F1 9.5 Tf 54.0 127.7 Td ([CAPTURA 3: REPL con "Control stack exhausted" y luego la versión corregida devolviendo) Tj ET
+BT /F1 9.5 Tf 54.0 113.9 Td (:VERDE]) Tj ET
+BT /F2 11.5 Tf 54.0 87.1 Td (Bug 4 - Los símbolos se imprimían en MAYÚSCULAS) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 16 0 R >>
+endobj
+16 0 obj
+<< /Length 4087 >>
+stream
+BT /F1 9.5 Tf 54.0 738.0 Td (Síntoma. La acción salía como "cambiar-a-VERDE" en lugar de) Tj ET
+BT /F1 9.5 Tf 54.0 724.2 Td ("cambiar-a-verde".) Tj ET
+BT /F1 9.5 Tf 54.0 705.5 Td (Causa. El reader de Common Lisp convierte los símbolos a mayúsculas por) Tj ET
+BT /F1 9.5 Tf 54.0 691.7 Td (defecto \('verde se internaliza como VERDE\), y ~A los imprime tal cual.) Tj ET
+BT /F1 9.5 Tf 54.0 672.9 Td (Solución. Usar la directiva de case de format: ~\(~a~\), que pasa a) Tj ET
+BT /F1 9.5 Tf 54.0 659.1 Td (minúsculas el texto generado: \(format nil "cambiar-a-~\(~a~\)" 'verde\) ->) Tj ET
+BT /F1 9.5 Tf 54.0 645.4 Td ("cambiar-a-verde".) Tj ET
+BT /F1 9.5 Tf 54.0 626.6 Td ([CAPTURA 4: REPL mostrando "cambiar-a-VERDE" y luego "cambiar-a-verde"]) Tj ET
+BT /F2 11.5 Tf 54.0 599.8 Td (Bug 5 - La auditoría mostraba una hora corrida \(zona horaria\) \(Fase 2\)) Tj ET
+BT /F1 9.5 Tf 54.0 578.1 Td (Síntoma. Al integrar local-time, la auditoría del epoch 1747405800) Tj ET
+BT /F1 9.5 Tf 54.0 564.4 Td (imprimía una hora distinta en cada máquina \(corrida varias horas\) y no coincidía) Tj ET
+BT /F1 9.5 Tf 54.0 550.6 Td (con la esperada en UTC:) Tj ET
+BT /F1 9.0 Tf 54.0 527.8 Td (    ;; INCORRECTO \(sin fijar zona\): toma la zona horaria local de la maquina) Tj ET
+BT /F1 9.0 Tf 54.0 514.8 Td (    \(local-time:format-timestring nil \(local-time:unix-to-timestamp 1747405800\)) Tj ET
+BT /F1 9.0 Tf 54.0 501.7 Td (                                  :format '\(\(:year 4\) "-" \(:month 2\) "-" \(:day 2\)\)\)) Tj ET
+BT /F1 9.0 Tf 54.0 488.7 Td (    => "2025-05-16 11:30:00"   ; <- corrido -3 h respecto de UTC \(zona AR\)) Tj ET
+BT /F1 9.5 Tf 54.0 466.6 Td (Causa. format-timestring, si no se le pasa :timezone, usa) Tj ET
+BT /F1 9.5 Tf 54.0 452.8 Td (local-time:default-timezone, que depende del entorno. La salida dejaba de ser) Tj ET
+BT /F1 9.5 Tf 54.0 439.1 Td (determinista y los ejemplos del Req 7 no eran reproducibles.) Tj ET
+BT /F1 9.5 Tf 54.0 420.3 Td (Solución. Formatear siempre en UTC, pasando explícitamente) Tj ET
+BT /F1 9.5 Tf 54.0 406.5 Td (:timezone local-time:+utc-zone+ dentro de auditoria-quicklisp. Así la fecha se) Tj ET
+BT /F1 9.5 Tf 54.0 392.7 Td (imprime igual en cualquier máquina.) Tj ET
+BT /F1 9.5 Tf 54.0 374.0 Td ([CAPTURA 5: REPL mostrando primero la hora corrida y luego, con +utc-zone+, la hora en) Tj ET
+BT /F1 9.5 Tf 54.0 360.2 Td (UTC]) Tj ET
+BT /F2 11.5 Tf 54.0 333.4 Td (Bug 6 - El format no imprimía la fecha ni saltaba de línea \(Fase 2\)) Tj ET
+BT /F1 9.5 Tf 54.0 311.7 Td (Síntoma. La primera versión de auditoria-quicklisp mostraba mal la línea:) Tj ET
+BT /F1 9.5 Tf 54.0 298.0 Td (aparecía una A literal, la fecha caía en el lugar equivocado, faltaba un color y) Tj ET
+BT /F1 9.5 Tf 54.0 284.2 Td (la línea terminaba con un % suelto en vez de saltar de renglón:) Tj ET
+BT /F1 9.0 Tf 54.0 261.4 Td (    ;; INCORRECTO) Tj ET
+BT /F1 9.0 Tf 54.0 248.4 Td (    \(format t "Tiempo A: la luz ha cambiado de ~A a ~A%") Tj ET
+BT /F1 9.0 Tf 54.0 235.3 Td (            fecha color-anterior color-actual\)) Tj ET
+BT /F1 9.0 Tf 54.0 222.3 Td (    ;; => "Tiempo A: la luz ha cambiado de 2025-05-16 14:30:00 a ROJO%") Tj ET
+BT /F1 9.5 Tf 54.0 200.2 Td (Causa. Dos errores de directivas de format: \(1\) se escribió A literal en) Tj ET
+BT /F1 9.5 Tf 54.0 186.4 Td (vez de la directiva ~A, por lo que la fecha no quedaba tras "Tiempo " y los ~A) Tj ET
+BT /F1 9.5 Tf 54.0 172.7 Td (se "corrían" \(la fecha ocupaba el lugar del color y color-actual no se imprimía\);) Tj ET
+BT /F1 9.5 Tf 54.0 158.9 Td (\(2\) % es un carácter literal -la directiva de nueva línea en format es ~%.) Tj ET
+BT /F1 9.5 Tf 54.0 140.1 Td (Solución. Usar ~A para los tres argumentos \(fecha, color-anterior,) Tj ET
+BT /F1 9.5 Tf 54.0 126.3 Td (color-actual\) y ~% para el salto de línea:) Tj ET
+BT /F1 9.0 Tf 54.0 103.6 Td (    \(format t "Tiempo ~A: la luz ha cambiado de ~A a ~A~%") Tj ET
+BT /F1 9.0 Tf 54.0 90.5 Td (            fecha color-anterior color-actual\)) Tj ET
+BT /F1 9.5 Tf 54.0 68.5 Td ([CAPTURA 6: REPL mostrando primero la línea con "Tiempo A:" y el "%" literal, y luego la) Tj ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 18 0 R >>
+endobj
+18 0 obj
+<< /Length 3910 >>
+stream
+BT /F1 9.5 Tf 54.0 738.0 Td (línea correcta]) Tj ET
+BT /F1 9.5 Tf 54.0 719.2 Td (----------------------------------------------------------------------------------------) Tj ET
+BT /F2 13.0 Tf 54.0 692.5 Td (5. Fase 3 - Estudio Comparativo: OCaml) Tj ET
+BT /F2 11.5 Tf 54.0 660.6 Td (5.1 Presentación del lenguaje) Tj ET
+BT /F1 9.5 Tf 54.0 638.9 Td (OCaml \(Objective Caml, 1996, INRIA - Francia\) es un lenguaje funcional) Tj ET
+BT /F1 9.5 Tf 54.0 625.2 Td (con tipado estático fuerte e inferencia de tipos \(sistema Hindley-Milner\),) Tj ET
+BT /F1 9.5 Tf 54.0 611.4 Td (que también admite estilo imperativo y orientado a objetos \(la "O"\). Sus rasgos) Tj ET
+BT /F1 9.5 Tf 54.0 597.6 Td (distintivos son los tipos algebraicos \(variantes\), el pattern matching) Tj ET
+BT /F1 9.5 Tf 54.0 583.8 Td (exhaustivo, la inmutabilidad por defecto y un compilador a código nativo muy) Tj ET
+BT /F1 9.5 Tf 54.0 570.1 Td (veloz. Su lema informal es "si compila, probablemente funciona": el verificador) Tj ET
+BT /F1 9.5 Tf 54.0 556.3 Td (de tipos elimina en compilación clases enteras de errores.) Tj ET
+BT /F1 9.5 Tf 54.0 537.5 Td (Industrias y áreas donde se usa:) Tj ET
+BT /F1 9.5 Tf 54.0 518.7 Td (* Finanzas / trading de alta frecuencia: es su nicho más famoso por la) Tj ET
+BT /F1 9.5 Tf 54.0 505.0 Td (seguridad de tipos y el rendimiento.) Tj ET
+BT /F1 9.5 Tf 54.0 491.2 Td (* Compiladores y tooling de lenguajes: análisis estático, type checkers.) Tj ET
+BT /F1 9.5 Tf 54.0 477.4 Td (* Métodos formales y verificación: asistentes de prueba y verificadores.) Tj ET
+BT /F1 9.5 Tf 54.0 463.6 Td (* Blockchain: contratos e infraestructura.) Tj ET
+BT /F1 9.5 Tf 54.0 449.9 Td (* Sistemas e infraestructura.) Tj ET
+BT /F1 9.5 Tf 54.0 431.1 Td (Empresas y proyectos conocidos:) Tj ET
+BT /F1 9.5 Tf 54.0 412.3 Td (* Jane Street - firma financiera que programa casi todo su trading en OCaml;) Tj ET
+BT /F1 9.5 Tf 54.0 398.5 Td (principal patrocinadora del ecosistema.) Tj ET
+BT /F1 9.5 Tf 54.0 384.8 Td (* Meta \(Facebook\) - Flow \(type checker de JavaScript\), Hack y) Tj ET
+BT /F1 9.5 Tf 54.0 371.0 Td (Infer \(análisis estático\) están escritos en OCaml; Reason es una sintaxis) Tj ET
+BT /F1 9.5 Tf 54.0 357.2 Td (alternativa para OCaml creada allí.) Tj ET
+BT /F1 9.5 Tf 54.0 343.4 Td (* Docker - su stack de red original \(MirageOS / unikernels\) usaba OCaml.) Tj ET
+BT /F1 9.5 Tf 54.0 329.7 Td (* Tezos - la blockchain está implementada en OCaml.) Tj ET
+BT /F1 9.5 Tf 54.0 315.9 Td (* Citrix \(XenServer\) - el toolstack de Xen está escrito en OCaml.) Tj ET
+BT /F1 9.5 Tf 54.0 302.1 Td (* Coq / Rocq - el asistente de pruebas formales está implementado en OCaml.) Tj ET
+BT /F1 9.5 Tf 54.0 288.3 Td (* El primer compilador de Rust se escribió en OCaml antes de hacerse) Tj ET
+BT /F1 9.5 Tf 54.0 274.6 Td (self-hosted.) Tj ET
+BT /F2 11.5 Tf 54.0 247.8 Td (5.2 Reimplementación de transicion y timer) Tj ET
+BT /F1 9.5 Tf 54.0 226.1 Td (El código completo está en comparativa/solucion.ml. Núcleo:) Tj ET
+BT /F1 9.0 Tf 54.0 203.3 Td (    type estado = En_rojo | En_amarillo | En_verde) Tj ET
+BT /F1 9.0 Tf 54.0 190.3 Td (    type color  = Rojo | Amarillo | Verde) Tj ET
+BT /F1 9.0 Tf 54.0 177.2 Td (    ) Tj ET
+BT /F1 9.0 Tf 54.0 164.2 Td (    let transicion actual cambiar_a =) Tj ET
+BT /F1 9.0 Tf 54.0 151.1 Td (      match actual, cambiar_a with) Tj ET
+BT /F1 9.0 Tf 54.0 138.1 Td (      | En_rojo,     Verde    -> \(En_rojo,     "cambiar-a-verde"\)) Tj ET
+BT /F1 9.0 Tf 54.0 125.0 Td (      | En_verde,    Amarillo -> \(En_verde,    "cambiar-a-amarillo"\)) Tj ET
+BT /F1 9.0 Tf 54.0 112.0 Td (      | En_amarillo, Rojo     -> \(En_amarillo, "cambiar-a-rojo"\)) Tj ET
+BT /F1 9.0 Tf 54.0 98.9 Td (      | _,           _        -> \(actual,      "accion-por-defecto"\)) Tj ET
+BT /F1 9.0 Tf 54.0 85.9 Td (    ) Tj ET
+BT /F1 9.0 Tf 54.0 72.8 Td (    let tiempo_rojo = 90 and tiempo_verde = 120 and tiempo_amarillo = 6) Tj ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 20 0 R >>
+endobj
+20 0 obj
+<< /Length 4032 >>
+stream
+BT /F1 9.0 Tf 54.0 738.0 Td (    let duracion_ciclo = tiempo_rojo + tiempo_verde + tiempo_amarillo  \(* 216 *\)) Tj ET
+BT /F1 9.0 Tf 54.0 725.0 Td (    ) Tj ET
+BT /F1 9.0 Tf 54.0 711.9 Td (    let timer timestamp =) Tj ET
+BT /F1 9.0 Tf 54.0 698.9 Td (      let posicion = \(\(timestamp mod duracion_ciclo\) + duracion_ciclo\) mod duracion_ciclo in) Tj ET
+BT /F1 9.0 Tf 54.0 685.8 Td (      if posicion < tiempo_rojo then Rojo) Tj ET
+BT /F1 9.0 Tf 54.0 672.8 Td (      else if posicion < tiempo_rojo + tiempo_verde then Verde) Tj ET
+BT /F1 9.0 Tf 54.0 659.7 Td (      else Amarillo) Tj ET
+BT /F2 11.5 Tf 54.0 629.7 Td (5.3 Pregunta 1 - Inferencia de tipos) Tj ET
+BT /F1 9.5 Tf 54.0 608.0 Td (  | *Al igual que Haskell, OCaml usa tipos estáticos pero cuenta con Inferencia de) Tj ET
+BT /F1 9.5 Tf 54.0 594.2 Td (  | Tipos. ¿Tuvieron que declarar explícitamente de qué tipo eran las funciones o el) Tj ET
+BT /F1 9.5 Tf 54.0 580.4 Td (  | compilador lo dedujo solo? Muestren cómo lo interpreta el entorno.*) Tj ET
+BT /F1 9.5 Tf 54.0 561.7 Td (No declaramos ningún tipo a mano: el compilador los dedujo solo. Al pegar las) Tj ET
+BT /F1 9.5 Tf 54.0 547.9 Td (definiciones en el toplevel \(ocaml / utop\), el entorno responde con la firma) Tj ET
+BT /F1 9.5 Tf 54.0 534.1 Td (inferida \(líneas val ...\):) Tj ET
+BT /F1 9.0 Tf 54.0 511.3 Td (    # type estado = En_rojo | En_amarillo | En_verde;;) Tj ET
+BT /F1 9.0 Tf 54.0 498.3 Td (    type estado = En_rojo | En_amarillo | En_verde) Tj ET
+BT /F1 9.0 Tf 54.0 485.2 Td (    ) Tj ET
+BT /F1 9.0 Tf 54.0 472.2 Td (    # type color = Rojo | Amarillo | Verde;;) Tj ET
+BT /F1 9.0 Tf 54.0 459.1 Td (    type color = Rojo | Amarillo | Verde) Tj ET
+BT /F1 9.0 Tf 54.0 446.1 Td (    ) Tj ET
+BT /F1 9.0 Tf 54.0 433.0 Td (    # let transicion actual cambiar_a =) Tj ET
+BT /F1 9.0 Tf 54.0 420.0 Td (        match actual, cambiar_a with) Tj ET
+BT /F1 9.0 Tf 54.0 406.9 Td (        | En_rojo, Verde -> \(En_rojo, "cambiar-a-verde"\)) Tj ET
+BT /F1 9.0 Tf 54.0 393.9 Td (        | En_verde, Amarillo -> \(En_verde, "cambiar-a-amarillo"\)) Tj ET
+BT /F1 9.0 Tf 54.0 380.8 Td (        | En_amarillo, Rojo -> \(En_amarillo, "cambiar-a-rojo"\)) Tj ET
+BT /F1 9.0 Tf 54.0 367.8 Td (        | _, _ -> \(actual, "accion-por-defecto"\);;) Tj ET
+BT /F1 9.0 Tf 54.0 354.7 Td (    val transicion : estado -> color -> estado * string = <fun>) Tj ET
+BT /F1 9.0 Tf 54.0 341.7 Td (    ) Tj ET
+BT /F1 9.0 Tf 54.0 328.6 Td (    # let timer timestamp =) Tj ET
+BT /F1 9.0 Tf 54.0 315.6 Td (        let posicion = \(\(timestamp mod 216\) + 216\) mod 216 in) Tj ET
+BT /F1 9.0 Tf 54.0 302.5 Td (        if posicion < 90 then Rojo) Tj ET
+BT /F1 9.0 Tf 54.0 289.5 Td (        else if posicion < 210 then Verde) Tj ET
+BT /F1 9.0 Tf 54.0 276.4 Td (        else Amarillo;;) Tj ET
+BT /F1 9.0 Tf 54.0 263.4 Td (    val timer : int -> color = <fun>) Tj ET
+BT /F1 9.5 Tf 54.0 241.3 Td (¿Cómo lo deduce? El motor Hindley-Milner razona a partir del uso:) Tj ET
+BT /F1 9.5 Tf 54.0 222.6 Td (* En transicion, hacer match del primer argumento contra el constructor) Tj ET
+BT /F1 9.5 Tf 54.0 208.8 Td (En_rojo obliga a que actual : estado; contra Verde, a que) Tj ET
+BT /F1 9.5 Tf 54.0 195.0 Td (cambiar_a : color; los -> devuelven una tupla \(estado, string\), de donde) Tj ET
+BT /F1 9.5 Tf 54.0 181.2 Td (infiere el retorno estado * string.) Tj ET
+BT /F1 9.5 Tf 54.0 167.5 Td (* En timer, el operador mod exige int, y las ramas devuelven constructores) Tj ET
+BT /F1 9.5 Tf 54.0 153.7 Td (de color; de ahí int -> color.) Tj ET
+BT /F1 9.5 Tf 54.0 134.9 Td (A diferencia de Common Lisp \(tipado dinámico: no hay verificación previa y) Tj ET
+BT /F1 9.5 Tf 54.0 121.1 Td (un \(transicion "rojo" 'verde\) falla recién en ejecución\), OCaml rechaza en) Tj ET
+BT /F1 9.5 Tf 54.0 107.4 Td (compilación cualquier uso con tipos incompatibles. Las anotaciones son) Tj ET
+BT /F1 9.5 Tf 54.0 93.6 Td (opcionales: podríamos escribir) Tj ET
+BT /F1 9.5 Tf 54.0 79.8 Td (let transicion \(actual : estado\) \(cambiar_a : color\) : estado * string = ... como) Tj ET
+endstream
+endobj
+21 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 22 0 R >>
+endobj
+22 0 obj
+<< /Length 4367 >>
+stream
+BT /F1 9.5 Tf 54.0 738.0 Td (documentación o para restringir, pero no son necesarias.) Tj ET
+BT /F2 11.5 Tf 54.0 711.2 Td (5.4 Pregunta 2 - Orientación a expresiones y match...with) Tj ET
+BT /F1 9.5 Tf 54.0 689.6 Td (  | *OCaml es un lenguaje "orientado a expresiones". ¿Cómo cambia esto la estructura) Tj ET
+BT /F1 9.5 Tf 54.0 675.8 Td (  | de control de flujos \(como el uso de match...with\) comparado con los) Tj ET
+BT /F1 9.5 Tf 54.0 662.0 Td (  | condicionales de Lisp?*) Tj ET
+BT /F1 9.5 Tf 54.0 643.2 Td (En OCaml todo es una expresión que produce un valor: no existen "sentencias".) Tj ET
+BT /F1 9.5 Tf 54.0 629.5 Td (if ... then ... else ... y match ... with devuelven un valor, igual que en Lisp) Tj ET
+BT /F1 9.5 Tf 54.0 615.7 Td (cond/case \(Common Lisp también es, en este sentido, orientado a expresiones\).) Tj ET
+BT /F1 9.5 Tf 54.0 601.9 Td (La diferencia real no es "expresión vs. sentencia", sino tres ventajas del) Tj ET
+BT /F1 9.5 Tf 54.0 588.1 Td (match...with de OCaml frente a los condicionales de Lisp:) Tj ET
+BT /F1 9.5 Tf 54.0 569.4 Td (1. Descomposición estructural \(pattern matching\). En transicion hacemos) Tj ET
+BT /F1 9.5 Tf 54.0 555.6 Td (match sobre la tupla \(actual, cambiar_a\) y desarmamos los datos en un) Tj ET
+BT /F1 9.5 Tf 54.0 541.8 Td (solo paso. En Lisp habría que encadenar tests booleanos:) Tj ET
+BT /F1 9.0 Tf 54.0 519.0 Td (       ;; Lisp: cond con predicados explícitos) Tj ET
+BT /F1 9.0 Tf 54.0 506.0 Td (       \(cond \(\(and \(eq color-actual 'en-rojo\) \(eq cambiar-a 'verde\)\)) Tj ET
+BT /F1 9.0 Tf 54.0 492.9 Td (              \(list color-actual "cambiar-a-verde"\)\)) Tj ET
+BT /F1 9.0 Tf 54.0 479.9 Td (             ;; ... más cláusulas ...) Tj ET
+BT /F1 9.0 Tf 54.0 466.8 Td (             \(t \(list color-actual 'accion-por-defecto\)\)\)) Tj ET
+BT /F1 9.0 Tf 54.0 440.8 Td (       \(* OCaml: el patrón describe la forma del dato *\)) Tj ET
+BT /F1 9.0 Tf 54.0 427.7 Td (       match actual, cambiar_a with) Tj ET
+BT /F1 9.0 Tf 54.0 414.7 Td (       | En_rojo, Verde -> \(En_rojo, "cambiar-a-verde"\)) Tj ET
+BT /F1 9.0 Tf 54.0 401.6 Td (       | _, _           -> \(actual, "accion-por-defecto"\)) Tj ET
+BT /F1 9.5 Tf 54.0 379.6 Td (2. Exhaustividad verificada en compilación. Si olvidamos un caso, el) Tj ET
+BT /F1 9.5 Tf 54.0 365.8 Td (compilador avisa: "this pattern-matching is not exhaustive". cond/case) Tj ET
+BT /F1 9.5 Tf 54.0 352.0 Td (de Lisp no ofrecen esa garantía: un caso faltante pasa silenciosamente al t/) Tj ET
+BT /F1 9.5 Tf 54.0 338.3 Td (otherwise \(o devuelve nil\) y el bug aparece en ejecución.) Tj ET
+BT /F1 9.5 Tf 54.0 319.5 Td (3. Seguridad de tipos. Como estado y color son tipos cerrados, sólo se) Tj ET
+BT /F1 9.5 Tf 54.0 305.7 Td (pueden matchear sus constructores válidos; un "azul" inexistente ni siquiera) Tj ET
+BT /F1 9.5 Tf 54.0 291.9 Td (compila. En Lisp, case compara por eql contra símbolos arbitrarios sin) Tj ET
+BT /F1 9.5 Tf 54.0 278.2 Td (chequeo previo.) Tj ET
+BT /F1 9.5 Tf 54.0 259.4 Td (El comodín _ cumple el papel del t de cond o del otherwise de case: la) Tj ET
+BT /F1 9.5 Tf 54.0 245.6 Td (cláusula por defecto. En síntesis, match...with no sólo elige una rama: describe) Tj ET
+BT /F1 9.5 Tf 54.0 231.8 Td (la forma de los datos y obliga a cubrir todos los casos, trasladando errores de) Tj ET
+BT /F1 9.5 Tf 54.0 218.1 Td (tiempo de ejecución \(Lisp\) a tiempo de compilación \(OCaml\).) Tj ET
+BT /F2 11.5 Tf 54.0 191.3 Td (5.5 Conclusión del grupo) Tj ET
+BT /F1 9.5 Tf 54.0 169.6 Td (Estudiar OCaml después de Common Lisp fue revelador. Veníamos de un mundo donde el) Tj ET
+BT /F1 9.5 Tf 54.0 155.8 Td (error aparece al ejecutar; en OCaml muchos de esos errores se vuelven) Tj ET
+BT /F1 9.5 Tf 54.0 142.1 Td (imposibles: el tipo estado no admite valores inválidos y el compilador exige) Tj ET
+BT /F1 9.5 Tf 54.0 128.3 Td (cubrir todos los casos del match. Eso obliga a pensar el dominio antes de) Tj ET
+BT /F1 9.5 Tf 54.0 114.5 Td (escribir la lógica, lo que resulta incómodo al principio y muy tranquilizador) Tj ET
+BT /F1 9.5 Tf 54.0 100.7 Td (después. La inferencia de tipos nos dio lo mejor de dos mundos: la seguridad del) Tj ET
+BT /F1 9.5 Tf 54.0 87.0 Td (tipado estático sin la verborragia de declarar todo. Comparado con los paréntesis) Tj ET
+BT /F1 9.5 Tf 54.0 73.2 Td (de Lisp, el pattern matching sobre tuplas nos pareció notablemente más) Tj ET
+endstream
+endobj
+23 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 24 0 R >>
+endobj
+24 0 obj
+<< /Length 1637 >>
+stream
+BT /F1 9.5 Tf 54.0 738.0 Td (declarativo y legible. La mayor fricción fue acostumbrarnos a que "todo es una) Tj ET
+BT /F1 9.5 Tf 54.0 724.2 Td (expresión" \(por ejemplo, que un if sin else deba devolver unit\) y a leer los) Tj ET
+BT /F1 9.5 Tf 54.0 710.5 Td (mensajes de tipo del compilador, que al principio intimidan pero terminan siendo la) Tj ET
+BT /F1 9.5 Tf 54.0 696.7 Td (mejor documentación.) Tj ET
+BT /F1 9.5 Tf 54.0 677.9 Td (----------------------------------------------------------------------------------------) Tj ET
+BT /F2 13.0 Tf 54.0 651.1 Td (6. Bibliografía) Tj ET
+BT /F1 9.5 Tf 54.0 627.3 Td (* Quicklisp - gestor de paquetes de Common Lisp. https://www.quicklisp.org/) Tj ET
+BT /F1 9.5 Tf 54.0 613.5 Td (* local-time - manejo de fechas, horas y zonas horarias en CL.) Tj ET
+BT /F1 9.5 Tf 54.0 599.7 Td (https://common-lisp.net/project/local-time/ y https://github.com/dlowe-net/local-time) Tj ET
+BT /F1 9.5 Tf 54.0 586.0 Td (* Seibel, P. Practical Common Lisp. https://gigamonkeys.com/book/) Tj ET
+BT /F1 9.5 Tf 54.0 572.2 Td (* SBCL - Steel Bank Common Lisp. http://www.sbcl.org/) Tj ET
+BT /F1 9.5 Tf 54.0 558.4 Td (* OCaml - sitio oficial y manual. https://ocaml.org/ y https://ocaml.org/manual/) Tj ET
+BT /F1 9.5 Tf 54.0 544.6 Td (* Real World OCaml \(Minsky, Madhavapeddy, Hickey\).) Tj ET
+BT /F1 9.5 Tf 54.0 530.9 Td (https://dev.realworldocaml.org/) Tj ET
+BT /F1 9.5 Tf 54.0 517.1 Td (* OCaml Playground \(entorno en línea\). https://ocaml.org/play) Tj ET
+BT /F1 9.5 Tf 54.0 503.3 Td (* Jane Street Tech Blog \(uso industrial de OCaml\).) Tj ET
+BT /F1 9.5 Tf 54.0 489.5 Td (https://blog.janestreet.com/) Tj ET
+endstream
+endobj
+xref
+0 25
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000177 00000 n 
+0000000272 00000 n 
+0000000372 00000 n 
+0000000508 00000 n 
+0000004140 00000 n 
+0000004276 00000 n 
+0000008859 00000 n 
+0000008996 00000 n 
+0000013217 00000 n 
+0000013355 00000 n 
+0000017688 00000 n 
+0000017826 00000 n 
+0000021475 00000 n 
+0000021613 00000 n 
+0000025753 00000 n 
+0000025891 00000 n 
+0000029854 00000 n 
+0000029992 00000 n 
+0000034077 00000 n 
+0000034215 00000 n 
+0000038635 00000 n 
+0000038773 00000 n 
+trailer
+<< /Size 25 /Root 1 0 R >>
+startxref
+40463
+%%EOF
