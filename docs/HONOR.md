@@ -44,21 +44,21 @@ Marque con una **X** la opción que mejor describa su situación para cada compo
 
 ---
 
-## 👤 Integrante 2: [Nombre y Apellido] — Usuario GitHub: [usuario]
+## 👤 Integrante 2: Castañeda Joaquina Aymara — Usuario GitHub: Joacast
 
 ### 1. Código en Common Lisp (Fase 1 y 2)
 - [ ] **Desarrollo 100% Humano**
-- [ ] **Asistencia de IA (Co-piloto)**
+- [X] **Asistencia de IA (Co-piloto)**
 - [ ] **Generación Completa por IA**
 
 ### 2. Código del Lenguaje Asignado — OCaml (Fase 3)
 - [ ] **Desarrollo 100% Humano**
-- [ ] **Asistencia de IA**
+- [X] **Asistencia de IA**
 - [ ] **Generación Completa por IA**
 
 ### 3. Redacción del Informe y Respuestas Teóricas
 - [ ] **Autoría Propia**
-- [ ] **Redacción Asistida / Generada**
+- [X] **Redacción Asistida / Generada**
 - [ ] **Generación completa por IA**
 
 > **Declaración Jurada:** declaro bajo compromiso de honor que las marcas anteriores
