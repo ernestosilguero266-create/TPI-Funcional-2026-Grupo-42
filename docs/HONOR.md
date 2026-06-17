@@ -12,7 +12,7 @@ Marque con una X la opción que mejor describa su situación para cada component
 > 1. Cada integrante completa su propio bloque (duplique o elimine bloques según
 >    la cantidad real de integrantes).
 > 2. Reemplace `[ ]` por `[X]` en la opción que corresponda y complete nombre/usuario.
-> 3. **Marque con honestidad.** Si usaron una IA como asistente en este TP, la opción
+> 3. Marque con honestidad. Si usaron una IA como asistente en este TP, la opción
 >    honesta es "Asistencia de IA" (o, si la IA generó bloques completos,
 >    "Generación Completa por IA"). La cátedra cruzará esta declaración con los
 >    comentarios del código y la defensa oral.
@@ -45,9 +45,9 @@ Marque con una X la opción que mejor describa su situación para cada component
 Integrante 2: Castañeda Joaquina Aymara — Usuario GitHub: Joacast
 
 1. Código en Common Lisp (Fase 1 y 2)
-- [ ] **Desarrollo 100% Humano
-- [X] **Asistencia de IA (Co-piloto
-- [ ] **Generación Completa por IA
+- [ ] Desarrollo 100% Humano
+- [X] Asistencia de IA (Co-piloto
+- [ ] Generación Completa por IA
 
 2. Código del Lenguaje Asignado — OCaml (Fase 3)
 - [ ] Desarrollo 100% Humano
