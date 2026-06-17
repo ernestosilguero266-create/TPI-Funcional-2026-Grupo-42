@@ -28,7 +28,7 @@ Quicklisp debe estar instalado para cargar core.lisp.
 
 Fase 3 — OCaml:
 
-Requisitos: [OCaml](https://ocaml.org/) (o el entorno en línea
+Requisitos: [OCaml](https://ocaml.org/) (o en el navegador
 [ocaml.org/play](https://ocaml.org/play)).
 
 INFORME:
