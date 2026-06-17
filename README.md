@@ -6,12 +6,6 @@ Análisis Comparativo de Paradigmas de Programación
 
 TPI Funcional 2026 — Grupo 42 · Universidad Nacional del Nordeste**
 
-![Common Lisp](https://img.shields.io/badge/Common%20Lisp-SBCL-blue?style=flat-square)
-![OCaml](https://img.shields.io/badge/OCaml-4.14-purple?style=flat-square)
-![Estado](https://img.shields.io/badge/Estado-Entregado-green?style=flat-square)
-![Paradigma](https://img.shields.io/badge/Paradigma-Funcional-orange?style=flat-square)
-
-
 Integrantes
 
 | Nombre y Apellido | Usuario GitHub |
@@ -65,11 +59,18 @@ TPI-Funcional-2026-Grupo-42/
 │   └── HONOR.md       → Código de Honor
 └── README.md
 ```
+Cómo ejecutar
 
+1. Tener instalado [SBCL](http://www.sbcl.org/) y [Quicklisp](https://www.quicklisp.org/)
+2. Cargar el archivo principal:
+
+```bash
+sbcl --load lisp/core.lisp
+```
 
 Sobre el proyecto
 
-El sistema simula el **cerebro lógico de un semáforo inteligente**:
+El sistema simula el cerebro lógico de un semáforo inteligente:
 
 | # | Requerimiento | Descripción |
 |---|---|---|
