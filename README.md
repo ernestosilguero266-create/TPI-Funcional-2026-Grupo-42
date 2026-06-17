@@ -4,7 +4,7 @@ Sistema de Semáforos Inteligentes
 
 Análisis Comparativo de Paradigmas de Programación
 
-TPI Funcional 2026 — Grupo 42 · Universidad Nacional del Nordeste**
+TPI Funcional 2026 — Grupo 42 · Universidad Nacional del Nordeste
 
 Integrantes
 
